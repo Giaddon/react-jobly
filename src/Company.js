@@ -35,7 +35,7 @@ function Company(){
       }
     }
     fetchCompany();
-  },[]);
+  },[handle]);
 
   return(
     <div className="company">

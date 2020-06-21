@@ -1,5 +1,5 @@
 import React, {useContext } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Companies from "./Companies";
 import Company from "./Company";
 import Jobs from "./Jobs";
@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 import LoginContext from "./LoginContext"
+import NotFound from "./NotFound";
 
 
 /** Controls which components to load based on url. 
@@ -20,21 +21,20 @@ function Routes({ user }) {
 
   return   (
       <Switch>
-        <Route exact path="/"><Home /></Route>
         <Route exact path="/login"><LoginForm /></Route>
         <Route exact path="/register"><RegistrationForm /></Route>
+        <Route exact path="/"><Home /></Route>
         {isLoggedIn 
-        ? 
-        <React.Fragment>
-        <Route exact path="/companies"><Companies /></Route>
-        <Route exact path="/companies/:handle"><Company /></Route>
-        <Route exact path="/jobs"><Jobs /></Route>
-        <Route exact path="/profile"><Profile /></Route>
-        </React.Fragment>
-        :
-        null
+          ? <Switch>
+            <Route exact path="/jobs"><Jobs /></Route>
+            <Route exact path="/companies/:handle"><Company /></Route>
+            <Route exact path="/companies"><Companies /></Route>
+            <Route exact path="/profile"><Profile /></Route>
+            <Route><NotFound /></Route>
+          </Switch>
+          : null
         }
-        <Redirect to="/" /> 
+        <Route><NotFound /></Route>
       </Switch>
   
   )

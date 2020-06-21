@@ -26,7 +26,11 @@ function Companies() {
           setCompanies(companiesResult);
           setLoading(false);
         } catch(err) {
-          console.log(err);
+          if (err.status === 404) {
+            setError({status: true, message: err.message});
+          } else {
+            setError(oldError => ({...oldError, status: true}) );
+          }
         }
       }
         fetchCompanies(searchTerm);

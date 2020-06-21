@@ -5,8 +5,6 @@ class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = localStorage.getItem("_token");
 
-    console.debug("API Call:", endpoint, paramsOrData, verb);
-
     try {
       return (await axios({
         method: verb,
@@ -26,9 +24,7 @@ class JoblyApi {
 
   // Requests data about a single company using the handle.
   static async getCompany(handle) {
-    console.log("handle: ",handle)
     let res = await this.request(`companies/${handle}`);
-    console.log("From getCompany:", res);
     return res.company;
   }
 
@@ -46,9 +42,7 @@ class JoblyApi {
 
   // Posts user login credentials and recieves back token for future requests
   static async loginUser(userCredentials) {
-    console.log("Logging in");
     let res = await this.request(`login`, userCredentials, "post");
-    console.log("REsponse: ", res)
     return res.token;
   }
 
@@ -60,7 +54,6 @@ class JoblyApi {
     delete newData.username;
     delete newData.jobs;
     if (!newData.photo_url) delete newData.photo_url;
-    console.log("What the API gets as formdata: ", newData);
     let res = await this.request(`users/${username}`, newData, "patch");
     return res.user;
   }
@@ -80,7 +73,6 @@ class JoblyApi {
 
   // post request applies for the job for the user.
   static async applyJob( id, username ) {
-    console.log("In JoblyAPI, id: ", id, "username", username);
     let res = await this.request(`jobs/${id}/apply`, { username } , "post");
     return res.message
   }

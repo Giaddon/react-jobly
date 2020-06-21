@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import "./NavBar.css";
 import LoginContext from "./LoginContext"
 
@@ -12,12 +12,14 @@ import LoginContext from "./LoginContext"
 function NavBar() {
 
   const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext)
+  const history = useHistory();
 
   // Should NavBar "know how" to log out? Could be in app or a new auth parent.
 
   function logOut() {
     localStorage.removeItem("_token");
     setIsLoggedIn(false);
+    history.push("/");
   }
 
   return (
