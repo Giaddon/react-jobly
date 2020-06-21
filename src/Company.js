@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./JoblyApi";
 import JobCard from "./JobCard";
+import "./Company.css"
 
 /** Component for a single company page. 
  *   Params:
@@ -37,7 +38,7 @@ function Company(){
   },[]);
 
   return(
-    <div>
+    <div className="company">
       {error.status 
         ? <h1>{error.message}</h1>
         : ""
@@ -51,7 +52,7 @@ function Company(){
             <h1>{company.name}</h1>
             <h3>{company.description}</h3>
             <div>
-              { company.jobs.map(j => <JobCard key={j.id} job={j} />) }  
+              { company.jobs.map(j => <JobCard key={j.id} job={j} at={false} />) }  
             </div>
           </div>
         : ""

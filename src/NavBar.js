@@ -22,18 +22,15 @@ function NavBar() {
 
   return (
     <div className="NavBar">
-      <h4><NavLink to ="/">Jobly</NavLink></h4>
+      <h1 className="nav-title"><NavLink to ="/">Jobly</NavLink></h1>
       { isLoggedIn 
-      ?<span>
+      ?<span className="nav-links">
         <p><NavLink to="/jobs">Jobs</NavLink></p>
         <p><NavLink to="/companies">Companies</NavLink></p>
         <p><NavLink to="/profile">Profile</NavLink></p>
         <button onClick={logOut}>Log out</button>
       </span>
-      :<span>
-        <p><NavLink to="/login">Login</NavLink></p> 
-        /<p><NavLink to="/register">register</NavLink></p>
-      </span>}
+      :""}
     </div>
   )
 }

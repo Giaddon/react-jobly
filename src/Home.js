@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import LoginContext from "./LoginContext";
+import "./Home.css"
 
 /** Home page, welcomes everyone! 
 *    context:
@@ -11,12 +12,12 @@ function Home() {
   const { isLoggedIn } = useContext(LoginContext)
 
   return (
-    <div>
+    <div className="home">
       <h1>Jobly</h1>
-      <h4>All the jobs in one, convenient place.</h4>
+      <p>All the jobs in one, convenient place.</p>
       { isLoggedIn 
-      ? <h2> Welcome Back!</h2>
-      : <NavLink to="/login">login</NavLink>
+      ? <div><h2>Welcome back.</h2><p><Link to="/jobs" className="button">See the jobs</Link></p></div>
+      : <p><Link to="/login" className="button">Log In</Link></p>
       }
     </div>
   )

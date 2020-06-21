@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import LoginContext from "./LoginContext";
 import JoblyApi from "./JoblyApi";
+import "./Profile.css"
 
 /**
  * User profile.
@@ -38,33 +39,32 @@ function Profile(){
   }
 
   return (
-    <div className="Profile-container">
+    <div className="profile">
       <h2>Profile</h2>
       {formData 
-      ? <div className="Profile-form">
+      ? <div>
         <p> Username: {formData.username} </p>
-        <form onSubmit={handleSubmit}>
-        <label>First name
-          <input type="text" name="first_name" value={formData.first_name} onChange={handleChange}/>
-        </label>
+        <form onSubmit={handleSubmit} autoComplete="off">
+        <label htmlFor="first_name">First name</label>
+        <input type="text" name="first_name" value={formData.first_name} id="first_name" onChange={handleChange}/>
         <br/>
-        <label> Last name
-          <input type="text" name="last_name" value={formData.last_name} onChange={handleChange}/>
-        </label>
+        <label htmlFor="last_name">Last name</label>
+        <input type="text" name="last_name" id="last_name" value={formData.last_name} onChange={handleChange}/>
+        
         <br/>
-        <label>Email
-          <input type="text" name="email" value={formData.email} onChange={handleChange}/>
-        </label>
+        <label htmlFor="email">Email</label>
+        <input type="text" name="email" id="email" value={formData.email} onChange={handleChange}/>
+        
         <br/>
-        <label>Photo URL
-          <input type="text" name="photo_url" value={formData.photo_url || ""} onChange={handleChange}/>
-        </label>
+        <label htmlFor="photo_url">Photo URL</label>
+        <input type="text" name="photo_url" id="photo_url" value={formData.photo_url || ""} onChange={handleChange}/>
+        
         <br/>
-        <label>Re-enter your password
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required/>
-        </label>
+        <label htmlFor="password">Re-enter your password</label>
+        <input type="password" name="password" id="password" value={formData.password} onChange={handleChange} required/>
+        
         <br/>
-        <button>Save changes</button>
+        <button className="button">Save changes</button>
         </form> 
       </div>
       : <h2>Loading user data...</h2>

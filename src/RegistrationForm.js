@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import JoblyApi from "./JoblyApi";
-import LoginContext from "./LoginContext"
+import LoginContext from "./LoginContext";
+import "./RegistrationForm.css";
 
 /**
  * Registration form for usesrs.
@@ -52,24 +53,25 @@ function RegistrationForm(){
 
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Username
-          <input type="text" name="username" onChange={handleChange}/>
-        </label>
-        <label>Password
-          <input type="password" name="password" onChange={handleChange}/>
-        </label>
-        <label>First name
-          <input type="text" name="first_name" onChange={handleChange}/>
-        </label>
-        <label>Last name
-          <input type="text" name="last_name" onChange={handleChange}/>
-        </label>
-        <label>Email
-          <input type="text" name="email" onChange={handleChange}/>
-        </label>
-        <button>Submit</button>
+    <div className="registrationform">
+       <span className="toggler"><Link to="/login"><h2 className="button">Log In</h2></Link><h2 className="nega-button">Register</h2></span>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <label htmlFor="username">Username</label>
+        <input type="text" name="username" id="username" onChange={handleChange}/><br />
+        
+        <label htmlFor="password">Password</label>
+        <input type="password" name="password" id="password" onChange={handleChange}/><br />
+        
+        <label htmlFor="first_name">First name</label>
+        <input type="text" name="first_name" id="first_name" onChange={handleChange}/><br />
+        
+        <label htmlFor="last_name">Last name</label>
+        <input type="text" name="last_name" id="last_name" onChange={handleChange}/><br />
+        
+        <label htmlFor="email">Email</label>
+        <input type="text" name="email" id="email" onChange={handleChange}/><br />
+        
+        <button className="button">Submit</button>
       </form>
       {displayError()}
     </div>

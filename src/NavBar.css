@@ -1,19 +1,45 @@
 .NavBar {
   height: 50px;
-  border-bottom: 1px solid #eee;
   top: 0;
+  background-color: skyblue;
+  color: #fff;
+  padding: 20px;
+  position: relative;
 }
 
-.NavBar h4 {
+.nav-title {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   display: inline-block;
+
 }
 
-.NavBar p {
+.nav-links {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 10px;
+}
+.nav-links p {
   display: inline-block;
   margin: 0px 0px 10px 15px;
 }
-
+.nav-links button {
+  margin-left: 10px;
+  padding: 6px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
 .active {
   font-weight: 600;
-  color: #111;
+  color: #fff;
+}
+
+.login {
+  position: relative;
+  left: 0;
 }

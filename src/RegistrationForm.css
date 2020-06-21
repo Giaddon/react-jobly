@@ -1,0 +1,33 @@
+.registrationform {
+  margin: 40px auto;
+  text-align: center;
+  border-radius: 3px;
+  max-width: 400px;
+  padding: 40px 0;
+  background-color: rgba(30, 30, 30, .8);
+  color: #fff;
+}
+
+.toggler h2 {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.registrationform  input {
+  padding: 4px;
+  display: block;
+  margin: auto;
+}
+
+.registrationform input:enabled {
+  outline: none;
+}
+
+.registrationform button {
+  padding: 8px;
+  background-color: skyblue;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}

@@ -1,10 +1,24 @@
 .CompanyCard {
-  border: 1px solid skyblue;
   border-radius: 3px;
   padding: 15px;
-  margin: 8px;
+  margin: 12px auto;
+  background-color: #fff;
+  color: #000;  
+}
+
+.CompanyCard h2 {
+  margin-bottom: 0px;
+}
+
+.CompanyCard h2 span {
+  font-size: 1em;
+}
+
+.CompanyCard a {
+  text-decoration: none;
 }
 
 .CompanyCard img {
   max-width: 50px;
 }
+

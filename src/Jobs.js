@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyApi";
 import JobCard from "./JobCard";
 import Search from "./Search";
+import "./jobs.css"
 
 /** Lists all jobs based on data from the API.
  *    States: 
@@ -37,8 +38,8 @@ function Jobs() {
   }
 
   return (
-    <div>
-      <h1>Available Jobs!</h1>
+    <div className="jobs">
+      <h1>Available Jobs:</h1>
       <Search submitSearch={submitSearch} />
       {error 
         ? <h2>There has been an error loading external data. Please try again later.</h2>

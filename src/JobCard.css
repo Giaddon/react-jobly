@@ -1,15 +1,18 @@
 .JobCard {
-  border: 1px solid skyblue;
   border-radius: 3px;
   padding: 15px;
-  margin: 8px;
+  margin: 12px auto;
+  background-color: #fff;
+  color: #000;  
+}
+
+.JobCard h2 {
+  margin-bottom: 0px;
 }
 
 .JobCard button {
   padding: 8px;
-  background-color: plum;
   color: #fff;
   border: none;
   font-size: 14px;
-  cursor: pointer;
 }

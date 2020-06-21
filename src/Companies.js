@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import JoblyApi from "./JoblyApi"
 import CompanyCard from "./CompanyCard"
 import Search from "./Search";
+import "./Companies.css";
 
 /** List of companies, data comes from API.
  *    States:
@@ -25,7 +26,7 @@ function Companies() {
           setCompanies(companiesResult);
           setLoading(false);
         } catch(err) {
-          setError(true);
+          console.log(err);
         }
       }
         fetchCompanies(searchTerm);
@@ -37,7 +38,7 @@ function Companies() {
   }
 
   return (
-    <div>
+    <div className="companies">
       <h1>Partner Companies</h1>
       <Search submitSearch={submitSearch} />
       {error 

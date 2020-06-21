@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./JobCard.css";
 import JoblyApi from "./JoblyApi";
 import LoginContext from "./LoginContext"
@@ -15,7 +16,7 @@ import LoginContext from "./LoginContext"
  * Consider refactor to seperate out presentation and logic.
  */
 
-function JobCard({ job }) {
+function JobCard({ job, at=true }) {
   const { user, setUser } = useContext(LoginContext);
   const [ error, setError ] = useState({status: false, message: "There has been an error."})
 
@@ -45,20 +46,22 @@ function JobCard({ job }) {
 
   return(
     <div className="JobCard">
-      <h3>{job.title}</h3>
-      <h3>Salary: {job.salary}</h3>
-      <h3>Equity: {job.equity}</h3>
-      { applied
-      ?
-        <p>Applied</p>
-      :
-        <button onClick={() => handleClick(job.id)}>Apply</button>
+      <h2>{job.title}</h2>
+      {at
+        ? <h4>at <Link to={`/companies/${job.company_handle}`}>{job.company_handle}</Link></h4>
+        : ""
       }
-      { error.status
-      ? 
-        <h4>There was an error applying. Please try again later.</h4>
-      :
-        ""
+      <br /> 
+      <h4>Salary: ${job.salary}</h4>
+      <h4>Equity: {job.equity}</h4>
+      <br />
+      {applied
+        ? <p>Applied</p>
+        : <button onClick={() => handleClick(job.id)} className="button">Apply</button>
+      }
+      {error.status
+        ? <h4>There was an error applying. Please try again later.</h4>
+        : ""
       }
     </div>
   );
